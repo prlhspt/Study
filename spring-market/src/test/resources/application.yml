@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/spring-market
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        #      show_sql: true
+        format_sql: true
+logging.level:
+#  root: debug
+  org.hibernate.SQL: debug
+  com.prlhspt.market: debug
+#  org.hibernate.type: trace
+
+jwt:
+  header: Authorization
+  #HS512 알고리즘을 사용할 것이기 때문에 512bit, 즉 64byte 이상의 secret key를 사용해야 한다.
+  #echo 'com-prlhspt-spring-market-spring-boot-jwt-security-com-prlhspt-spring-market-spring-boot-jwt-security'|base64
+  secret: Y29tLXBybGhzcHQtc3ByaW5nLW1hcmtldC1zcHJpbmctYm9vdC1qd3Qtc2VjdXJpdHktY29tLXBybGhzcHQtc3ByaW5nLW1hcmtldC1zcHJpbmctYm9vdC1qd3Qtc2VjdXJpdHkK
+  access-token-expire-in-seconds: 1800 #60 * 30 = 30m
+  refresh-token-expire-in-seconds: 604800 #60 * 60 * 24 * 7 = 7d
