@@ -9,7 +9,7 @@ import static javax.persistence.FetchType.*;
 
 @Entity
 @Getter
-public class ItemCategory {
+public class ItemCategory extends BaseEntity {
 
     @Id @GeneratedValue
     private Long id;

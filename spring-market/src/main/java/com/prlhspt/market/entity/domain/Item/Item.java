@@ -1,5 +1,6 @@
 package com.prlhspt.market.entity.domain.Item;
 
+import com.prlhspt.market.entity.domain.BaseEntity;
 import com.prlhspt.market.entity.domain.ItemCategory;
 import com.prlhspt.market.exception.NotEnoughStockException;
 import lombok.Getter;
@@ -14,7 +15,7 @@ import static javax.persistence.InheritanceType.JOINED;
 @Inheritance(strategy = JOINED)
 @DiscriminatorColumn(name = "dtype")
 @Getter
-public abstract class Item {
+public abstract class Item extends BaseEntity {
 
     @Id @GeneratedValue
     @Column(name = "item_id")
