@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "refresh_token")
 @Entity
-public class RefreshToken {
+public class    RefreshToken {
 
     @Id
     private String key;

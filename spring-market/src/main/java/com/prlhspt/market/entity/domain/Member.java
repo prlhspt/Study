@@ -5,6 +5,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,17 +28,17 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private Authority authority;
 
+    @Embedded
+    private Address address;
+
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
+
     @Builder
     public Member(String username, String password, Authority authority) {
         this.username = username;
         this.password = password;
         this.authority = authority;
     }
-
-    public Member(String username) {
-        this.username = username;
-    }
-
-
 
 }

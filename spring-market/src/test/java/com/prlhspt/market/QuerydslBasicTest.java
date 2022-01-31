@@ -29,9 +29,11 @@ public class QuerydslBasicTest {
 
     @Test
     public void startQuerydsl() {
+        Member member = Member.builder()
+                .username("member")
+                .build();
 
-        Member member1 = new Member("member");
-        em.persist(member1);
+        em.persist(member);
 
         //member1을 찾아라.
         QMember m = new QMember("m");

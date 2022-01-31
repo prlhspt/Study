@@ -20,6 +20,11 @@ class AuthServiceTest {
 
     @Autowired AuthService authService;
 
+    private void createMember() {
+        MemberRequestDto memberRequestDto = new MemberRequestDto("member", "qwer1234");
+        authService.signup(memberRequestDto);
+    }
+
     @DisplayName("아이디와 비밀번호가 일치했을 때 로그인이 성공해야 한다.")
     @Test
     public void successLogin() throws Exception{
@@ -45,11 +50,6 @@ class AuthServiceTest {
                 authService.login(new MemberRequestDto("member", "error")));
         assertEquals("Bad credentials", thrown.getMessage());
 
-    }
-
-    private void createMember() {
-        MemberRequestDto memberRequestDto = new MemberRequestDto("member", "qwer1234");
-        authService.signup(memberRequestDto);
     }
 
 }

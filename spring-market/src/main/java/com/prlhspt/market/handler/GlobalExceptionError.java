@@ -28,7 +28,7 @@ public class GlobalExceptionError {
     @ExceptionHandler
     @ResponseBody
     public final ErrorDto handleAccessDeniedException(AccessDeniedException exception) {
-        return new ErrorDto(HttpServletResponse.SC_FORBIDDEN, exception.getMessage());
+        return new ErrorDto(HttpServletResponse.SC_FORBIDDEN, "접근 권한이 없습니다.");
     }
 
     @ResponseStatus(UNSUPPORTED_MEDIA_TYPE)
