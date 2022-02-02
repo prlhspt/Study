@@ -1,6 +1,6 @@
 package com.prlhspt.market.service;
 
-import com.prlhspt.market.web.dto.MemberRequestDto;
+import com.prlhspt.market.web.dto.LoginRequestDto;
 import com.prlhspt.market.domain.auth.Authority;
 import com.prlhspt.market.domain.Member;
 import org.junit.jupiter.api.DisplayName;
@@ -31,26 +31,32 @@ class MemberServiceTest {
 
     @Autowired AuthService authService;
 
-
-
     public static final String BEARER_PREFIX = "Bearer ";
 
     private void createMember() {
 
-        Member admin = new Member("admin", passwordEncoder.encode("admin"), Authority.ROLE_ADMIN);
+        Member admin = Member.builder()
+                .username("admin")
+                .authority(Authority.ROLE_ADMIN)
+                .password(passwordEncoder.encode("admin"))
+                .build();
         em.persist(admin);
 
-        Member testMember = new Member("member", passwordEncoder.encode("qwer1234"), Authority.ROLE_USER);
-        em.persist(testMember);
+        Member member = Member.builder()
+                .username("member")
+                .authority(Authority.ROLE_USER)
+                .password(passwordEncoder.encode("member"))
+                .build();
+        em.persist(member);
 
     }
 
     @Test
-    @DisplayName("허가되지 않은 권한의 기능은 접근이 금지되어야 한다.")
+    @DisplayName("허가되지 않은 권한의 기능은 접근이 금지되어야 한다")
     void shouldNotAllowAccessNoAuthorization() throws Exception {
         createMember();
 
-        String token = authService.login(new MemberRequestDto("member", "qwer1234")).getAccessToken();
+        String token = authService.login(new LoginRequestDto("member", "member")).getAccessToken();
         assertNotNull(token);
 
         mvc.perform(MockMvcRequestBuilders
@@ -60,11 +66,11 @@ class MemberServiceTest {
     }
 
     @Test
-    @DisplayName("허가된 권한의 기능은 접근이 가능해야 한다.")
+    @DisplayName("허가된 권한의 기능은 접근이 가능해야 한다")
     void shouldAllowAccessNoAuthorization() throws Exception {
         createMember();
 
-        String token = authService.login(new MemberRequestDto("admin", "admin")).getAccessToken();
+        String token = authService.login(new LoginRequestDto("admin", "admin")).getAccessToken();
         assertNotNull(token);
 
         mvc.perform(MockMvcRequestBuilders

@@ -1,7 +1,7 @@
-package com.prlhspt.market.web.controller;
+package com.prlhspt.market.web.api;
 
 import com.prlhspt.market.service.AuthService;
-import com.prlhspt.market.web.dto.MemberRequestDto;
+import com.prlhspt.market.web.dto.LoginRequestDto;
 import com.prlhspt.market.web.dto.MemberResponseDto;
 import com.prlhspt.market.jwt.dto.TokenDto;
 import com.prlhspt.market.jwt.dto.TokenRequestDto;
@@ -18,16 +18,17 @@ import javax.validation.Valid;
 @RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
+
     private final AuthService authService;
 
     @PostMapping("/signup")
-    public ResponseEntity<MemberResponseDto> signup(@Valid @RequestBody MemberRequestDto memberRequestDto) {
-        return ResponseEntity.ok(authService.signup(memberRequestDto));
+    public ResponseEntity<MemberResponseDto> signup(@Valid @RequestBody LoginRequestDto loginRequestDto) {
+        return ResponseEntity.ok(authService.signup(loginRequestDto));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<TokenDto> login(@Valid @RequestBody MemberRequestDto memberRequestDto) {
-        return ResponseEntity.ok(authService.login(memberRequestDto));
+    public ResponseEntity<TokenDto> login(@Valid @RequestBody LoginRequestDto loginRequestDto) {
+        return ResponseEntity.ok(authService.login(loginRequestDto));
     }
 
     @PostMapping("/reissue")

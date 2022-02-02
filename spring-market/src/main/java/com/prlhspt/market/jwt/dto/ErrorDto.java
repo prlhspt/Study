@@ -2,6 +2,7 @@ package com.prlhspt.market.jwt.dto;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.prlhspt.market.web.dto.CustomFieldError;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.validation.FieldError;
@@ -15,7 +16,7 @@ public class ErrorDto {
 
     private final int status;
     private final String message;
-    private List<FieldError> fieldErrors = new ArrayList<>();
+    private List<CustomFieldError> fieldErrors = new ArrayList<>();
 
     ObjectMapper mapper = new ObjectMapper();
 
@@ -32,12 +33,12 @@ public class ErrorDto {
         return message;
     }
 
-    public void addFieldError(String objectName, String path, String message) {
-        FieldError error = new FieldError(objectName, path, message);
+    public void addFieldError(String fieldName, Object rejectValue, String message) {
+        CustomFieldError error = new CustomFieldError(fieldName, rejectValue, message);
         fieldErrors.add(error);
     }
 
-    public List<FieldError> getFieldErrors() {
+    public List<CustomFieldError> getFieldErrors() {
         return fieldErrors;
     }
 

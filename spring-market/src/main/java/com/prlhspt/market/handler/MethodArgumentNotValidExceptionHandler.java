@@ -3,6 +3,7 @@ package com.prlhspt.market.handler;
 import com.prlhspt.market.jwt.dto.ErrorDto;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -28,11 +29,23 @@ public class MethodArgumentNotValidExceptionHandler {
         return processFieldErrors(fieldErrors);
     }
 
+    @ResponseStatus(BAD_REQUEST)
+    @ResponseBody
+    @ExceptionHandler
+    public ErrorDto bindException(BindException ex) {
+        BindingResult result = ex.getBindingResult();
+        List<FieldError> fieldErrors = result.getFieldErrors();
+        return processFieldErrors(fieldErrors);
+    }
+
     private ErrorDto processFieldErrors(List<FieldError> fieldErrors) {
         ErrorDto errorDTO = new ErrorDto(BAD_REQUEST.value(), "@Valid Error");
         for (FieldError fieldError: fieldErrors) {
-            errorDTO.addFieldError(fieldError.getObjectName(), fieldError.getField(), fieldError.getDefaultMessage());
+            if (fieldError != null) {
+                errorDTO.addFieldError(fieldError.getField(), fieldError.getRejectedValue(),fieldError.getDefaultMessage());
+            }
         }
         return errorDTO;
     }
+
 }

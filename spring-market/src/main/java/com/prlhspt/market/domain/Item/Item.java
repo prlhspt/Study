@@ -3,7 +3,10 @@ package com.prlhspt.market.domain.Item;
 import com.prlhspt.market.domain.BaseEntity;
 import com.prlhspt.market.domain.ItemCategory;
 import com.prlhspt.market.exception.NotEnoughStockException;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,10 +14,12 @@ import java.util.List;
 
 import static javax.persistence.InheritanceType.JOINED;
 
-@Entity
-@Inheritance(strategy = JOINED)
-@DiscriminatorColumn(name = "dtype")
 @Getter
+@ToString(of = {"name", "price", "stockQuantity"})
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
+@DiscriminatorColumn(name = "dtype")
+@Inheritance(strategy = JOINED)
+@Entity
 public abstract class Item extends BaseEntity {
 
     @Id @GeneratedValue
@@ -29,6 +34,12 @@ public abstract class Item extends BaseEntity {
 
     @OneToMany(mappedBy = "item")
     private List<ItemCategory> itemCategories = new ArrayList<ItemCategory>();
+
+    public Item(String name, int price, int stockQuantity) {
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+    }
 
     public void addStock(int quantity) {
         this.stockQuantity += quantity;

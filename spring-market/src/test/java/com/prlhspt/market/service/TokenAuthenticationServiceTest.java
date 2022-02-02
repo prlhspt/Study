@@ -1,6 +1,6 @@
 package com.prlhspt.market.service;
 
-import com.prlhspt.market.web.dto.MemberRequestDto;
+import com.prlhspt.market.web.dto.LoginRequestDto;
 import com.prlhspt.market.jwt.TokenProvider;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,13 +30,13 @@ public class TokenAuthenticationServiceTest {
     public static final String BEARER_PREFIX = "Bearer ";
 
     @Test
-    @DisplayName("토큰 없이 API 요청 시 로그인이 거부되어야 한다.")
+    @DisplayName("토큰 없이 API 요청 시 로그인이 거부되어야 한다")
     public void shouldNotAllowAccessNoToken() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/member/me")).andExpect(status().isUnauthorized());
     }
 
     @Test
-    @DisplayName("잘못된 토큰으로 API 요청 시 로그인이 거부되어야 한다.")
+    @DisplayName("잘못된 토큰으로 API 요청 시 로그인이 거부되어야 한다")
     public void shouldNotAllowAccessWrongToken() throws Exception {
 
         mvc.perform(MockMvcRequestBuilders
@@ -46,13 +46,13 @@ public class TokenAuthenticationServiceTest {
     }
 
     @Test
-    @DisplayName("로그인 후 발급된 토큰으로 API 요청 시 정상 작동하여야 한다.")
+    @DisplayName("로그인 후 발급된 토큰으로 API 요청 시 정상 작동하여야 한다")
     public void shouldGenerateAuthToken() throws Exception {
 
-        MemberRequestDto memberRequestDto = new MemberRequestDto("member", "qwer1234");
-        authService.signup(memberRequestDto);
+        LoginRequestDto loginRequestDto = new LoginRequestDto("member", "qwer1234");
+        authService.signup(loginRequestDto);
 
-        String token = authService.login(memberRequestDto).getAccessToken();
+        String token = authService.login(loginRequestDto).getAccessToken();
         assertNotNull(token);
         mvc.perform(MockMvcRequestBuilders
                 .get("/member/me")

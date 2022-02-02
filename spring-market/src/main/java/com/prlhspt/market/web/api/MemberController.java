@@ -1,4 +1,4 @@
-package com.prlhspt.market.web.controller;
+package com.prlhspt.market.web.api;
 
 import com.prlhspt.market.service.MemberService;
 import com.prlhspt.market.web.dto.MemberResponseDto;
@@ -16,6 +16,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 @RequestMapping("/member")
 public class MemberController {
+
     private final MemberService memberService;
 
     @GetMapping("/me")

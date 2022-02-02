@@ -24,4 +24,9 @@ public class Delivery extends BaseEntity {
     public void setOrder(Order order) {
         this.order = order;
     }
+
+    public Delivery(Address address, DeliveryStatus status) {
+        this.address = address;
+        this.status = status;
+    }
 }

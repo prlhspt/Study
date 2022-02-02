@@ -1,9 +1,10 @@
 package com.prlhspt.market;
 
 import com.prlhspt.market.domain.Member;
-import com.prlhspt.market.domain.domain.QMember;
+import com.prlhspt.market.domain.QMember;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +29,7 @@ public class QuerydslBasicTest {
     }
 
     @Test
+    @DisplayName("쿼리 DSL select 테스트")
     public void startQuerydsl() {
         Member member = Member.builder()
                 .username("member")
