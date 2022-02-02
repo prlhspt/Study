@@ -1,6 +1,6 @@
 package com.prlhspt.market.jwt.filter;
 
-import com.prlhspt.market.dto.auth.ErrorDto;
+import com.prlhspt.market.jwt.dto.ErrorDto;
 import com.prlhspt.market.exception.UsernameFromTokenException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

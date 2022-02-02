@@ -1,6 +1,6 @@
 package com.prlhspt.market.handler;
 
-import com.prlhspt.market.dto.auth.ErrorDto;
+import com.prlhspt.market.jwt.dto.ErrorDto;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;

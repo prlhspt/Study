@@ -1,6 +1,6 @@
 package com.prlhspt.market.jwt;
 
-import com.prlhspt.market.dto.auth.TokenDto;
+import com.prlhspt.market.jwt.dto.TokenDto;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;

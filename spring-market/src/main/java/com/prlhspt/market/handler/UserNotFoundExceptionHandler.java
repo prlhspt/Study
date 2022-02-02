@@ -1,6 +1,6 @@
 package com.prlhspt.market.handler;
 
-import com.prlhspt.market.dto.auth.ErrorDto;
+import com.prlhspt.market.jwt.dto.ErrorDto;
 import com.prlhspt.market.exception.UserNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

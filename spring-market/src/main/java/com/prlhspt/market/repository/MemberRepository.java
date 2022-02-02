@@ -1,6 +1,6 @@
 package com.prlhspt.market.repository;
 
-import com.prlhspt.market.entity.domain.Member;
+import com.prlhspt.market.domain.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

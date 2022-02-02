@@ -1,6 +1,6 @@
 package com.prlhspt.market.repository;
 
-import com.prlhspt.market.entity.auth.RefreshToken;
+import com.prlhspt.market.domain.auth.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

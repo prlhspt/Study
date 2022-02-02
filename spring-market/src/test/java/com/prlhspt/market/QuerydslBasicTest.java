@@ -1,7 +1,7 @@
 package com.prlhspt.market;
 
-import com.prlhspt.market.entity.domain.Member;
-import com.prlhspt.market.entity.domain.QMember;
+import com.prlhspt.market.domain.Member;
+import com.prlhspt.market.domain.domain.QMember;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

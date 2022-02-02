@@ -1,6 +1,6 @@
 package com.prlhspt.market.handler;
 
-import com.prlhspt.market.dto.auth.ErrorDto;
+import com.prlhspt.market.jwt.dto.ErrorDto;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.validation.BindingResult;
