@@ -4,6 +4,7 @@ import com.prlhspt.market.domain.Item.Album;
 import com.prlhspt.market.domain.Item.Item;
 import com.prlhspt.market.service.ItemService;
 import com.prlhspt.market.web.dto.AlbumRequestDto;
+import com.prlhspt.market.web.dto.ItemResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -26,13 +28,15 @@ public class ItemController {
     private final ItemService itemService;
 
     @GetMapping
-    public Result itemList() throws Throwable {
-        List<Item> items = itemService.findItems();
+    public Result itemList() {
+        List<ItemResponseDto> result = itemService.findItems().stream()
+                .map(i -> new ItemResponseDto(i))
+                .collect(Collectors.toList());
         Long count = itemService.countItem();
-        return new Result(count, items);
+        return new Result(count, result);
     }
 
-    @PostMapping("/album")
+    @PostMapping("/save/album")
     public ResponseEntity<String> createItem(@Valid @RequestBody AlbumRequestDto albumRequestDto, BindingResult bindingResult) throws BindException {
 
         if (bindingResult.hasErrors()) {
@@ -46,11 +50,9 @@ public class ItemController {
 
     }
 
-
-
     @Data
     @AllArgsConstructor
-    static class Result<T, U> {
+    static class Result<U, T> {
         private U count;
         private T data;
     }

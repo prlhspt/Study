@@ -26,6 +26,11 @@ public class ItemService {
         return itemRepository.findAll();
     }
 
+    public Item findByName(String name) throws Throwable {
+        return (Item) itemRepository.findByName(name)
+                .orElseThrow(() -> new IllegalArgumentException("해당 상품이 없습니다"));
+    }
+
     public Item findOne(Long itemId) throws Throwable {
         return (Item) itemRepository.findById(itemId)
                 .orElseThrow(() -> new IllegalArgumentException("상품 수량이 부족합니다"));

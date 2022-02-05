@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface ItemRepository<T extends Item> extends JpaRepository<T, Long>, ItemRepositoryCustom {
 
-    Optional<Item> findByName(String username);
+    Optional<Item> findByName(String name);
 
 }

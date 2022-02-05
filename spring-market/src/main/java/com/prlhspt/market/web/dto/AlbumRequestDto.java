@@ -18,18 +18,18 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class AlbumRequestDto {
 
-    @NotNull
+    @NotNull(message = "이름은 공백으로 전송할 수 없습니다")
     private String name;
 
-    @NotNull
-    @Range(min = 1000, max = 1000000)
+    @NotNull(message = "가격은 공백으로 전송할 수 없습니다")
+    @Range(min = 1000, max = 1000000, message = "가격은 1000 이상 1000000 이하로 전송해야 합니다")
     private int price;
 
     @NotNull
-    @Max(9999)
+    @Max(value = 9999, message = "재고는 9999 이하로 전송해야 합니다")
     private int stockQuantity;
 
-    @NotNull
+    @NotNull(message = "작가는 공백으로 전송할 수 없습니다")
     private String artist;
 
     private String etc;

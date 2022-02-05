@@ -1,11 +1,15 @@
 package com.prlhspt.market.domain;
 
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
 @Getter
+@Entity
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class Delivery extends BaseEntity {
 
     @Id @GeneratedValue
@@ -25,6 +29,7 @@ public class Delivery extends BaseEntity {
         this.order = order;
     }
 
+    @Builder
     public Delivery(Address address, DeliveryStatus status) {
         this.address = address;
         this.status = status;
