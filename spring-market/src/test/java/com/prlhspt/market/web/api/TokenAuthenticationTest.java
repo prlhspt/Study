@@ -1,5 +1,6 @@
-package com.prlhspt.market.service;
+package com.prlhspt.market.web.api;
 
+import com.prlhspt.market.service.AuthService;
 import com.prlhspt.market.web.dto.LoginRequestDto;
 import com.prlhspt.market.jwt.TokenProvider;
 import org.junit.jupiter.api.DisplayName;
@@ -17,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @Transactional
 @AutoConfigureMockMvc
-public class TokenAuthenticationServiceTest {
+public class TokenAuthenticationTest {
 
     @Autowired
     private MockMvc mvc;
@@ -25,7 +26,8 @@ public class TokenAuthenticationServiceTest {
     @Autowired
     TokenProvider tokenProvider;
 
-    @Autowired AuthService authService;
+    @Autowired
+    AuthService authService;
 
     public static final String BEARER_PREFIX = "Bearer ";
 

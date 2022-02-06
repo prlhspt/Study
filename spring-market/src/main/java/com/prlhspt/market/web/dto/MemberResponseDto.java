@@ -10,9 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberResponseDto {
+    private Long id;
     private String username;
 
     public static MemberResponseDto of(Member member) {
-        return new MemberResponseDto(member.getUsername());
+        return new MemberResponseDto(member.getId(), member.getUsername());
     }
 }
