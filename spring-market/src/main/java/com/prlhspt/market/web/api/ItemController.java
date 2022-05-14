@@ -32,7 +32,7 @@ public class ItemController {
         List<ItemResponseDto> result = itemService.findItems().stream()
                 .map(i -> new ItemResponseDto(i))
                 .collect(Collectors.toList());
-        Long count = itemService.countItem();
+        Long count = itemService.countAll();
         return new Result(count, result);
     }
 

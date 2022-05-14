@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.prlhspt.market.domain.Item.Album;
 import com.prlhspt.market.domain.Item.Item;
 import com.prlhspt.market.jwt.dto.TokenDto;
+import com.prlhspt.market.repository.OrderItemRepository;
 import com.prlhspt.market.service.AuthService;
 import com.prlhspt.market.service.ItemService;
 import com.prlhspt.market.service.MemberService;
@@ -26,6 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -39,10 +41,20 @@ class OrderControllerTest {
     @Autowired OrderService orderService;
     @Autowired MemberService memberService;
     @Autowired ItemService itemService;
+    @Autowired OrderItemRepository orderItemRepository;
+
 
     @Autowired ObjectMapper objectMapper;
 
     public static final String BEARER_PREFIX = "Bearer ";
+
+    @Test
+    @DisplayName("해당 유저에 대한 전체 주문 리스트 출력")
+    void orderList() {
+
+
+
+    }
 
     @Test
     @DisplayName("로그인 하지 않고 주문을 시도하면 권한 에러를 발생시킨다.")

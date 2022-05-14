@@ -1,4 +1,4 @@
-package com.prlhspt.market.config;
+package com.prlhspt.market.config.auth;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;

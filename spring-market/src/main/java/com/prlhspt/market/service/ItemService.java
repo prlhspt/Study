@@ -36,7 +36,7 @@ public class ItemService {
                 .orElseThrow(() -> new IllegalArgumentException("상품 수량이 부족합니다"));
     }
 
-    public Long countItem() {
-        return itemRepository.countItem();
+    public Long countAll() {
+        return itemRepository.countAll();
     }
 }

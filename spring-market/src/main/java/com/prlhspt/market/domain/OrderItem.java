@@ -1,17 +1,15 @@
 package com.prlhspt.market.domain;
 
 import com.prlhspt.market.domain.Item.Item;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
+@Getter
+@ToString
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name="order_item")
-@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter
 public class OrderItem extends BaseEntity {
 
     @Id @GeneratedValue

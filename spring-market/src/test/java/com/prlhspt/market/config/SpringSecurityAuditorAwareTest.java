@@ -83,7 +83,7 @@ class SpringSecurityAuditorAwareTest {
         String content = objectMapper.writeValueAsString(albumRequestDto);
 
         mvc.perform(MockMvcRequestBuilders
-                        .post("/items/album")
+                        .post("/items/save/album")
                         .header("Authorization", BEARER_PREFIX + token)
                         .content(content)
                         .contentType(MediaType.APPLICATION_JSON))
@@ -109,7 +109,7 @@ class SpringSecurityAuditorAwareTest {
         String content = objectMapper.writeValueAsString(albumRequestDto);
 
         mvc.perform(MockMvcRequestBuilders
-                        .post("/items/album")
+                        .post("/items/save/album")
                         .header("Authorization", BEARER_PREFIX + token)
                         .content(content)
                         .contentType(MediaType.APPLICATION_JSON))
@@ -136,7 +136,7 @@ class SpringSecurityAuditorAwareTest {
         String content = objectMapper.writeValueAsString(albumRequestDto);
 
         mvc.perform(MockMvcRequestBuilders
-                        .post("/items/album")
+                        .post("/items/save/album")
                         .header("Authorization", BEARER_PREFIX + token)
                         .content(content)
                         .contentType(MediaType.APPLICATION_JSON))

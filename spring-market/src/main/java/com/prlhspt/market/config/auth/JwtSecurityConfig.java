@@ -1,4 +1,4 @@
-package com.prlhspt.market.config;
+package com.prlhspt.market.config.auth;
 
 import com.prlhspt.market.jwt.TokenProvider;
 import com.prlhspt.market.jwt.filter.ExceptionHandlerFilter;

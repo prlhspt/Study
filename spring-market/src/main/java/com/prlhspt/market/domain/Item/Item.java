@@ -15,7 +15,6 @@ import java.util.List;
 import static javax.persistence.InheritanceType.JOINED;
 
 @Getter
-@ToString(of = {"name", "price", "stockQuantity"})
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @DiscriminatorColumn(name = "dtype")
 @Inheritance(strategy = JOINED)

@@ -1,9 +1,11 @@
 package com.prlhspt.market.service;
 
+import com.prlhspt.market.config.dto.MemberSearchCondition;
 import com.prlhspt.market.domain.*;
 import com.prlhspt.market.domain.Item.Item;
 import com.prlhspt.market.repository.ItemRepository;
 import com.prlhspt.market.repository.MemberRepository;
+import com.prlhspt.market.repository.OrderItemQueryRepository;
 import com.prlhspt.market.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -22,6 +23,7 @@ public class OrderService {
     private final MemberRepository memberRepository;
     private final OrderRepository orderRepository;
     private final ItemRepository itemRepository;
+    private final OrderItemQueryRepository orderItemQueryRepository;
 
     @Transactional
     public Long order(Long memberId, Long itemId, int count) throws Throwable {
@@ -56,7 +58,15 @@ public class OrderService {
     }
 
     public List<Order> findOrders() {
-        return orderRepository.findAll();
+        return orderRepository.findOrders();
+    }
+
+    public List<OrderItem> findOrderItem(MemberSearchCondition condition) {
+        return orderItemQueryRepository.findAllByUsername(condition);
+    }
+
+    public Long countAll(MemberSearchCondition condition) {
+        return orderItemQueryRepository.countAll(condition);
     }
 
 

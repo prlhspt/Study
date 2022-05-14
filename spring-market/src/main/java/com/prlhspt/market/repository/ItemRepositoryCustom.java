@@ -1,6 +1,6 @@
 package com.prlhspt.market.repository;
 
-public interface ItemRepositoryCustom{
+public interface ItemRepositoryCustom {
 
-    Long countItem();
+    Long countAll();
 }
